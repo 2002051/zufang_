@@ -5,6 +5,9 @@
     <Footer />
   </div>
 </template>
+
+
+
 <script>
 import Header from '/@/views/index/components/header.vue'
 import Footer from '/@/views/index/components/footer.vue'
