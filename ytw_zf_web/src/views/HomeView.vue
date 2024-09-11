@@ -38,10 +38,21 @@
 .l-side{
 
 }
+.l-title{
+  text-align: center;
+}
+.mx-1{
+
+}
+.mx-1:hover{
+  user-select: none;
+  background-color: #e1e1e1;
+}
 .l-category-content{
   border-bottom:1px solid #cccccc;
   padding-bottom: 60px;
   display: flex;
+  flex-direction: column;
   //align-items: ;
 }
 
