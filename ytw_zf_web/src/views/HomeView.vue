@@ -3,7 +3,7 @@
 </script>
 
 <template>
-   主页
+123123
 </template>
 
 <style scoped lang="scss">
