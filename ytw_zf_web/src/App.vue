@@ -49,6 +49,7 @@ import HeadBar from "@/components/HeadBar.vue";
 .sidebar-left, .sidebar-right {
   padding-top: 50px;
   width: auto;
+  max-width: 170px;
   background-color: #ccc; /* 假设你希望边栏有一个更深的灰色背景 */
 }
 .sidebar-left {
