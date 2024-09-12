@@ -1,6 +1,6 @@
 # 学习文档
 
-> 一直想做一款管理系统，看了很多优秀的开源项目但是发现没有合适的。于是利用空闲休息时间开始自己写了一套管理系统。现将部分源码开源，如需完整源码，可以联系客服微信购买：lengqin1024
+> 
 
 ### 功能介绍
 
@@ -10,18 +10,6 @@
 
 - 前台功能包括：首页、房屋详情页、用户中心模块。
 - 后台功能包括：总览、房屋管理、分类管理、标签管理、评论管理、用户管理、运营管理、日志管理、系统信息模块。
-
-
-### 演示地址
-
-前台地址： http://zf.gitapp.cn
-
-后台地址： http://zf.gitapp.cn/admin
-
-后台管理帐号：
-
-用户名：admin123
-密码：admin123
 
 ### 代码结构
 
@@ -77,17 +65,5 @@ npm run serve
 
 ![](https://github.com/geeeeeeeek/python_zf/blob/master/server/upload/img/b.png?raw=true)
 
-
-
-
-
-### 付费咨询
-
-微信（lengqin1024）
-
-
-### 打赏作者
-
-<img src="https://raw.githubusercontent.com/geeeeeeeek/python_book/master/bookproject/upload/img/weixin-pay.jpg" width=400/>
 
 
