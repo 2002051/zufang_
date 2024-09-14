@@ -6,12 +6,8 @@
           <div class="l-category">
             <div class="l-title"><h3>房屋分类</h3></div>
             <div class="l-category-content">
-              <el-text class="mx-1">一居室</el-text>
-              <el-text class="mx-1">一居室</el-text>
-              <el-text class="mx-1">一居室</el-text>
-              <el-text class="mx-1">一居室</el-text>
-              <el-text class="mx-1">一居室</el-text>
-              <el-text class="mx-1">一居室</el-text>
+              <el-text class="mx-1" v-for="item in category_list">{{ item.title }}</el-text>
+
 
             </div>
           </div>
@@ -62,8 +58,9 @@
 
 <script setup>
 
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 const tag_list = ref(['冰箱', '空调', '洗衣机', '阳台', '吹风机', '卫生间', '电视机',])
 const selected_tag_list = ref([])
 const thisTitle = ref("最新")
@@ -73,6 +70,20 @@ const router = useRouter();
 const doJump = (x)=>{
   router.push('/detail');
 }
+const category_list = ref([]);
+
+onMounted((e)=>{
+  // console.log()
+  axios.get("http://127.0.0.1:8000/myapp/index/classification/list").then((res)=>{
+    // console.log("res",res.data.data)
+    category_list.value = [...res.data.data]
+    console.log("xxxxxx:",category_list.value)
+
+  }).catch((err)=>{
+    console.log("err",err)
+  })
+
+})
 
 </script>
 
