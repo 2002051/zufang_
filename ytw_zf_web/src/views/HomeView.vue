@@ -71,8 +71,8 @@ const thisTitle = ref("最新")
 const img_list = ref()
 // const tag_items = ref([{label:1,},{},{}])
 const router = useRouter();
-const doJump = (x) => {
-  router.push('/detail');
+const  doJump = (x) => {
+  router.push('detail');
 }
 const category_list = ref([]);
 const tag_list = ref([])

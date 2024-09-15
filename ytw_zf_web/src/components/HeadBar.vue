@@ -12,7 +12,7 @@
     <div className="right">
       <div className="backEntry">后台入口</div>
       <div className="Login">
-        <el-button type="success" round>登录</el-button>
+        <el-button type="success" round @click="gotoLogin">登录</el-button>
       </div>
       <div className="News">
         <el-icon size="28px">
@@ -26,8 +26,13 @@
 <script setup>
 import {ref} from 'vue'
 import {Search, Bell} from '@element-plus/icons-vue'
-
+import router from "@/router/index.js";
 const input = ref('')
+
+const gotoLogin = (e)=>{
+  router.push('login')
+}
+
 </script>
 
 <style scoped>
@@ -79,4 +84,8 @@ const input = ref('')
 .right .backEntry:hover {
   color: #060e80;
 }
+
+
+
+
 </style>
