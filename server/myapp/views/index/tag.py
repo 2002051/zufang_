@@ -9,6 +9,7 @@ from myapp.serializers import TagSerializer
 @api_view(['GET'])
 def list_api(request):
     if request.method == 'GET':
+        print(123123)
         tags = Tag.objects.all().order_by('-create_time')
         serializer = TagSerializer(tags, many=True)
         return APIResponse(code=0, msg='查询成功', data=serializer.data)
