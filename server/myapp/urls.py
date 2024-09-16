@@ -60,7 +60,6 @@ urlpatterns = [
     # path('admin/user/info', views.admin.user.info),
     # path('admin/adminLogin', views.admin.user.admin_login),
 
-
     # 前台管理api
     # path('index/classification/list', views.index.classification.list_api.as_view()),
     path('index/classification/list', views.index.classification.list_api.as_view()),
@@ -93,7 +92,4 @@ urlpatterns = [
     path('index/address/create', views.index.address.create),
     path('index/address/update', views.index.address.update),
     path('index/address/delete', views.index.address.delete),
-
-
-
 ]

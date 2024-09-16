@@ -100,9 +100,9 @@ const RegisterError = ref({
 })
 
 const registerForm = ref({
-  nick: "",
-  avator: "/media/avator/default.jpg", // 默认头像
-  sex: "",
+  // nick: "",
+  // avator: "/media/avator/default.jpg", // 默认头像
+  // sex: "",
   username: "",
   password: "",
   repassword:"",
@@ -144,10 +144,11 @@ const doSubmit = function () {
   _axios.post("/myapp/index/user/login", form.value).then((res) => {
     console.log("res", res)
     if (res.data.code !== 0) {
-      ElMessage.error(res.data.detail.msg[0])
+      ElMessage.error(res.data.msg)
     } else {
       // 登录成功，将token存储在cookies中
-      store.doSaveToken(res.data.data["token"])
+      store.doSaveToken(res.data.data.token)
+      store.doSave = {...res.data.data}
       ElMessage({
         message: '登录成功!',
         type: 'success',
@@ -179,7 +180,7 @@ function doRegister(){
   if(isEmpty){
     ElMessage.error('请将信息填写完整');
   }else{
-    _axios.post("/chat/register/",registerForm.value).then(function (res) {
+    _axios.post("/myapp/index/user/register",registerForm.value).then(function (res) {
       console.log("注册结果",res)
       if(res.data.code===0){
         ElMessage({

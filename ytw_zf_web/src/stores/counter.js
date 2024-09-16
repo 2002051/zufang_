@@ -12,6 +12,11 @@ export const userInfoStore = defineStore('counter', () => {
     cookies.set("info", JSON.stringify(info), 10) // 单位分钟
     userStr.value = JSON.stringify(info)
   }
+  function doSaveToken(token){
 
-  return {userDict, doSave}
+    cookies.set("token", JSON.stringify(token), 60*24*7)
+    console.log("保存成功:",cookies.get("token"))
+  }
+
+  return {userDict, doSave,doSaveToken}
 })

@@ -5,6 +5,11 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
+            path: '/',
+            name: 'root',
+            redirect: { name: "home" }
+        },
+        {
             path: '/login',
             name: 'login',
             component: () => import('../views/Login.vue')
@@ -17,7 +22,7 @@ const router = createRouter({
                 {
                     path: 'login',
                     name: 'login',
-                    component:() => import('../views/Login.vue')
+                    component: () => import('../views/Login.vue')
                 },
                 {
                     path: 'home',
@@ -45,22 +50,18 @@ const router = createRouter({
 })
 import {userInfoStore} from "@/stores/counter.js";
 // 导航守卫
-router.beforeEach(function (to, from, next) {
+router.beforeEach((to, from, next) => {
     // 1  登录页面，不需要校验直接过
-    console.log("e", to.name)
-    // if (to.name === "login") {
-    //   next()
-    //   return;
-    // }
-    // const store = userInfoStore()
-    // console.log("store",store)
-    // if (!store.userId) {
-    //   next({name: "login"})
-    // }else{
-    //   next()
-    // }
-    next()
-})
 
+
+    // 示例代码中已注释掉的部分
+    // const store = userInfoStore();
+    // if (!store.userId) {
+    //     next({ name: "login" });
+    // } else {
+    //     next();
+    // }
+    next();
+});
 
 export default router

@@ -1,20 +1,28 @@
 <template>
-  <div className="box">
-    <div className="left">
-      <div className="logo"><h3>租房</h3></div>
-      <div className="search">
+  <div class="box">
+    <div class="left">
+      <div class="logo"><h3>租房</h3></div>
+      <div class="search">
         <el-input v-model="input" style="width: 280px" placeholder="搜索"/>
         <el-icon size="20px" style="margin-left: 10px">
           <Search/>
         </el-icon>
       </div>
     </div>
-    <div className="right">
-      <div className="backEntry">后台入口</div>
-      <div className="Login">
+    <div class="right">
+      <div class="backEntry">后台入口</div>
+      <div class="Login" v-if="!is_login">
         <el-button type="success" round @click="gotoLogin">登录</el-button>
       </div>
-      <div className="News">
+      <div class="status" v-if="!!is_login">
+        <el-avatar :size="30" src="https://empty" @error="errorHandler">
+          <img
+              src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+          />
+        </el-avatar>
+        已登录
+      </div>
+      <div class="News">
         <el-icon size="28px">
           <Bell/>
         </el-icon>
@@ -24,14 +32,33 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {Search, Bell} from '@element-plus/icons-vue'
 import router from "@/router/index.js";
+import {useCookies} from 'vue3-cookies'
+import {userInfoStore} from "@/stores/counter.js";
+
+
+const {cookies} = useCookies() // 导入vue3使用cookies
 const input = ref('')
 
 const gotoLogin = (e)=>{
   router.push('login')
 }
+const userinfo = ref()
+const is_login = ref(false)
+
+
+
+onMounted((e)=>{
+  let token = cookies.get("token");
+  let store = userInfoStore();
+  is_login.value = !!token;
+
+  userinfo.value = store.userDict
+  console.log("userinfo",userinfo)
+})
+
 
 </script>
 
@@ -71,12 +98,16 @@ const gotoLogin = (e)=>{
   align-items: center;
 }
 
-.right .Login {
+.right div {
   margin-right: 50px;
+}
+.right .status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right .backEntry {
-  margin-right: 50px;
   user-select: none;
   color: #00a6be;
 }
