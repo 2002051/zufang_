@@ -153,7 +153,12 @@ const doSubmit = function () {
         message: '登录成功!',
         type: 'success',
       })
-      router.push({"name": "home"})
+      // router.push({"name": "home"})
+      // 返回上一页并重新加载
+      router.go(-1); // 返回上一页
+      setTimeout(() => {
+        window.location.reload(); // 重新加载页面
+      }, 50);
     }
   })
 }

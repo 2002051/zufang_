@@ -11,14 +11,14 @@
     </div>
     <div class="right">
       <div class="backEntry">后台入口</div>
+<!--  未登录    -->
       <div class="Login" v-if="!is_login">
         <el-button type="success" round @click="gotoLogin">登录</el-button>
       </div>
+<!--  已登录    -->
       <div class="status" v-if="!!is_login">
         <el-avatar :size="30" src="https://empty" @error="errorHandler">
-          <img
-              src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-          />
+          <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
         </el-avatar>
         已登录
       </div>
@@ -45,7 +45,7 @@ const input = ref('')
 const gotoLogin = (e)=>{
   router.push('login')
 }
-const userinfo = ref()
+const userinfo = ref({})
 const is_login = ref(false)
 
 
@@ -54,7 +54,7 @@ onMounted((e)=>{
   let token = cookies.get("token");
   let store = userInfoStore();
   is_login.value = !!token;
-
+  console.log("store",store)
   userinfo.value = store.userDict
   console.log("userinfo",userinfo)
 })
