@@ -9,8 +9,12 @@ export const userInfoStore = defineStore('counter', () => {
   const userDict = computed(() => JSON.parse(userStr.value))
 
   function doSave(info) {
+    console.log("11",info)
     cookies.set("info", JSON.stringify(info), 10) // 单位分钟
+    console.log("保存成功2:",cookies.get("info"))
     userStr.value = JSON.stringify(info)
+    console.log(JSON.parse(userStr.value))
+
   }
   function doSaveToken(token){
 
@@ -18,5 +22,5 @@ export const userInfoStore = defineStore('counter', () => {
     console.log("保存成功:",cookies.get("token"))
   }
 
-  return {userDict, doSave,doSaveToken}
+  return {userStr,userDict, doSave,doSaveToken}
 })

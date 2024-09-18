@@ -142,13 +142,13 @@ const doSubmit = function () {
   })
   error.value = ""
   _axios.post("/myapp/index/user/login", form.value).then((res) => {
-    console.log("res", res)
+    console.log("res", res.data.data)
     if (res.data.code !== 0) {
       ElMessage.error(res.data.msg)
     } else {
       // 登录成功，将token存储在cookies中
       store.doSaveToken(res.data.data.token)
-      store.doSave = {...res.data.data}
+      store.doSave({...res.data.data})
       ElMessage({
         message: '登录成功!',
         type: 'success',

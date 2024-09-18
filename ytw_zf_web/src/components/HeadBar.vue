@@ -54,9 +54,10 @@ onMounted((e)=>{
   let token = cookies.get("token");
   let store = userInfoStore();
   is_login.value = !!token;
-  console.log("store",store)
+  // console.log("store",store.userDict)
   userinfo.value = store.userDict
-  console.log("userinfo",userinfo)
+  // console.log("userinfo",userinfo)
+  console.log("userStr",store.userStr)
 })
 
 
