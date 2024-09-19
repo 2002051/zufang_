@@ -148,7 +148,7 @@ const doSubmit = function () {
     } else {
       // 登录成功，将token存储在cookies中
       store.doSaveToken(res.data.data.token)
-      store.doSave = {...res.data.data}
+      store.doSave(res.data.data)
       ElMessage({
         message: '登录成功!',
         type: 'success',

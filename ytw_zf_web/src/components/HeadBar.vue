@@ -20,7 +20,7 @@
         <el-avatar :size="30" src="https://empty" @error="errorHandler">
           <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
         </el-avatar>
-        已登录
+        {{ is_login?"欢迎你：" + userinfo.username:"登录异常" }}
       </div>
       <div class="News">
         <el-icon size="28px">
@@ -54,9 +54,7 @@ onMounted((e)=>{
   let token = cookies.get("token");
   let store = userInfoStore();
   is_login.value = !!token;
-  console.log("store",store)
   userinfo.value = store.userDict
-  console.log("userinfo",userinfo)
 })
 
 
@@ -102,11 +100,15 @@ onMounted((e)=>{
   margin-right: 50px;
 }
 .right .status{
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.right .status:hover{
+  color: #00a6be;
 
+}
 .right .backEntry {
   user-select: none;
   color: #00a6be;
